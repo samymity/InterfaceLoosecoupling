@@ -1,1 +1,83 @@
 
+
+
+interface  VideoPlayer
+{
+    void play ( String filename);
+}
+
+
+
+class Mp4Player implements VideoPlayer
+{
+
+
+    @Override
+    public void play(String filename) {
+
+        System.out.println("mp4 file");
+    }
+}
+
+
+class AviPlayer implements VideoPlayer
+{
+
+
+    @Override
+    public void play(String filename) {
+
+        System.out.println("avi file");
+    }
+}
+
+
+
+class PlayerFactory{
+
+    public VideoPlayer getVideoPlayer( String name)
+
+    {
+     if (name.endsWith("mp4"))
+
+     {
+        return new Mp4Player();
+     }
+
+     else
+
+     {
+         return new AviPlayer();
+     }
+
+    }
+}
+
+
+
+
+public class Main {
+
+    public static void main(String[] args)
+
+    {
+        System.out.println("Hello World!");
+
+        String player = "avi";
+       /* AviPlayer a = new AviPlayer();
+        Mp4Player b = new Mp4Player();*/
+
+
+       PlayerFactory factory = new PlayerFactory();
+
+        VideoPlayer pl = factory.getVideoPlayer(player );
+
+
+
+      //  a.play(player);
+    //    b.play(player);
+        pl.play(player);
+
+    }
+}
+
